@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR VR Showroom</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('OIP.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: fixed; /* Fixed position for header */
+            top: 0; /* Fixed to top */
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Higher z-index for header */
+        }
+
+        nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 0rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed; /* Fixed position for navbar */
+            top: 60px; /* Adjust top position based on header height */
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Higher z-index for navbar */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-right: 1rem;
+        }
+
+        nav ul li a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #0056b3;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 2rem;
+            padding-top: 120px; /* Adjust padding top based on header and navbar height */
+        }
+
+        .container {
+            flex-basis: 48%;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .product-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .product {
+            flex-basis: 20%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-5px); /* Hover effect */
+        }
+
+        .product img {
+            width: 60%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .product img:hover {
+            transform: scale(1.1); /* Hover effect */
+        }
+
+        .product-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .cart-section {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 3; /* Ensure cart section stays on top of everything */
+        }
+
+        .cart-items {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .bottom-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .bottom-buttons button {
+            margin-right: 10px;
+            background-color: #28a745; /* Green color */
+            border-color: #28a745;
+            transition: background-color 0.3s ease;
+        }
+
+        .bottom-buttons button:hover {
+            background-color: #218838; /* Darker green color on hover */
+        }
+
+        /* Other styles as needed */
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to AR VR Showroom</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+        <button onclick="showCart()">Cart</button>
+    </nav>
+    <main>
+        <div class="product-wrapper">
+            <div class="product">
+                <img src="product.jpg" alt="Product">
+                <h3>VR Headset Virtual Reality</h3>
+                <p>Description:</p>
+                <p>VR Headset Virtual Reality advanced All-In-One Virtual Reality Headset.</p>
+                <div class="product-buttons">
+                    <button onclick="buyProduct('product1')">Buy Now</button>
+                    <button onclick="addToCart('product1')">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="product 2.jpg" alt="Product 2">
+                <h3>VR Headset Virtual Reality Headset</h3>
+                <p>Description</p>
+                <p>VR Headset Virtual Reality Headset With In Buit Headphones With 3.5mm Aux Jack VR Headset for Gaming ,Video & Movies Compatible for All Android & iOS Smartphones</p>
+                <div class="product-buttons">
+                    <button onclick="buyProduct('product2')">Buy Now</button>
+                    <button onclick="addToCart('product2')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="bottom-buttons">
+            <button>Contact Us</button>
+            <button>Explore Products</button>
+            <button onclick="learnMore()">Learn More</button>
+        </div>
+        <p style="text-align:center;">Komal Suryanarayana © 2023 AR VR Showroom. All rights reserved.</p>
+    </footer>
+    <script>
+        let cartItems = [];
+
+        function addToCart(productName) {
+            cartItems.push(productName);
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartElement = document.getElementById('cartItems');
+            cartElement.innerHTML = '';
+            cartItems.forEach(item => {
+                let cartItem = document.createElement('div');
+                cartItem.classList.add('cart-items');
+                cartItem.textContent = item;
+                cartElement.appendChild(cartItem);
+            });
+        }
+
+        function buyProduct(productName) {
+            // Add logic for buying product
+            alert('You bought ' + productName);
+        }
+
+        function showCart() {
+            let cartSection = document.getElementById('cartSection');
+            cartSection.style.display = 'block';
+        }
+
+        function learnMore() {
+            alert('Learn more about AR VR technology and our showroom.');
+        }
+    </script>
+    <section id="contact" class="container">
+        <h2>Contact Us</h2>
+        <div class="contact">
+            <p>For inquiries and support, please contact us at:</p>
+            <p>Email: gkomalsuryanarana@gmail.com</p>
+            <p>Phone: +91-9347-158-648</p>
+        </div>
+    </section>
+</body>
+
+</html>
+
